@@ -1,0 +1,22 @@
+# vim: ft=yaml.docker-compose
+name: trilium
+include:
+  - path:
+      - ext/docker-compose-snippets/caddy.yaml
+      - ext/docker-compose-snippets/reverse_proxy_override.yaml
+services:
+  trilium:
+    image: triliumnext/notes:latest
+    hostname: proxy_target
+    environment:
+      - TRILIUM_DATA_DIR=/home/node/trilium-data
+    volumes:
+      - trilium-data:/home/node/trilium-data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+volumes:
+  trilium-data:
+secrets:
+  ts_authkey:
+    file: ./ts_authkey.txt
