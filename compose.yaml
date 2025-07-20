@@ -12,7 +12,7 @@ services:
     environment:
       TRILIUM_DATA_DIR: /home/node/trilium-data
       TRILIUM_NETWORK_PORT: 8080
-      TRILIUM_NETWORK_TRUSTEDREVERSEPROXY: 'true'
+      TRILIUM_NETWORK_TRUSTEDREVERSEPROXY: localhost
     volumes:
       - trilium-data:/home/node/trilium-data
       - /etc/timezone:/etc/timezone:ro
