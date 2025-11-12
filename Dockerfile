@@ -1,4 +1,4 @@
-FROM triliumnext/trilium:v0.99.4
+FROM triliumnext/trilium:v0.99.5
 
 RUN mkdir -p /usr/local/share/ca-certificates
 COPY ext/pki/tls/*.crt /usr/local/share/ca-certificates
