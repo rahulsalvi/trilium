@@ -43,7 +43,8 @@ configs:
   Caddyfile:
     content: |
       ${COMPOSE_PROJECT_NAME}.ipn.rahulsalvi.com {
-        handle /mcp/* {
+        @mcp path /mcp /mcp/*
+        handle @mcp {
           reverse_proxy localhost:443 {
             header_up Host localhost
             header_up X-Real-IP 127.0.0.1
