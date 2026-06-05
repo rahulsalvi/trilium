@@ -50,7 +50,10 @@ configs:
             header_up X-Real-IP 127.0.0.1
             header_up X-Forwarded-For 127.0.0.1
             header_up X-Forwarded-Host localhost
-            header_up X-Forwarded-Proto http
+            header_up X-Forwarded-Proto https
+            transport http {
+              tls_insecure_skip_verify
+            }
           }
         }
         reverse_proxy localhost:8080
