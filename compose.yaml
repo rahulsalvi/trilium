@@ -45,15 +45,12 @@ configs:
       ${COMPOSE_PROJECT_NAME}.ipn.rahulsalvi.com {
         @mcp path /mcp /mcp/*
         handle @mcp {
-          reverse_proxy localhost:443 {
+          reverse_proxy localhost:8080 {
             header_up Host localhost
             header_up X-Real-IP 127.0.0.1
             header_up X-Forwarded-For 127.0.0.1
             header_up X-Forwarded-Host localhost
-            header_up X-Forwarded-Proto https
-            transport http {
-              tls_insecure_skip_verify
-            }
+            header_up X-Forwarded-Proto http
           }
         }
         reverse_proxy localhost:8080
