@@ -4,6 +4,7 @@ name: trilium
 
 include:
   - ext/docker-compose-snippets/tailscale-caddy.yaml
+  - ext/docker-compose-snippets/simple-reverse-proxy.yaml
   - ext/docker-compose-snippets/volume-backup-schedules.yaml
 
 services:
@@ -38,19 +39,3 @@ services:
 
 volumes:
   trilium-data:
-
-configs:
-  Caddyfile:
-    content: |
-      ${COMPOSE_PROJECT_NAME}.ipn.rahulsalvi.com {
-        @mcp path /mcp /mcp/*
-        handle @mcp {
-          reverse_proxy localhost:8080 {
-            header_up Host localhost
-            header_up X-Real-IP 127.0.0.1
-            header_up X-Forwarded-For 127.0.0.1
-            header_up X-Forwarded-Host localhost
-          }
-        }
-        reverse_proxy localhost:8080
-      }
